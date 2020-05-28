@@ -1,0 +1,36 @@
+{
+  "name": "track-renders",
+  "version": "1.0.0",
+  "description": "tool to warn us of wasted re renders",
+  "main": "index.js",
+  "author": "Gretchen Ward",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "react-fast-compare": "^3.2.0",
+    "typescript": "^3.9.3"
+  },
+  "scripts": {
+    "build": "parcel build src/index.html -d dist/src",
+    "start": "parcel src/index.html -d dist/src",
+    "lint": "eslint src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.153",
+    "eslint": "^7.1.0",
+    "eslint-plugin-react": "^7.20.0",
+    "husky": "^4.2.5",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  }
+}
