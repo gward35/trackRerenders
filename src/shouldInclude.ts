@@ -4,6 +4,14 @@ type OptionsObject = {
   // figure out union type for string[] and RegExp[]
   include: any
   exclude: any
+  groupByComponent: boolean
+  collapseComponentGroups: boolean
+  defaultNotifier: (
+    groupByComponent: boolean,
+    collapseComponentGroups: boolean,
+    displayName: string,
+    diffs: []
+  ) => void
 }
 
 export const shouldInclude = (displayName: string, options: OptionsObject) => {
