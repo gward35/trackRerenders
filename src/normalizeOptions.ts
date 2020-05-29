@@ -14,7 +14,12 @@ type OptionsObject = {
   exclude: any
   groupByComponent: boolean
   collapseComponentGroups: boolean
-  defaultNotifier: () => void
+  defaultNotifier: (
+    groupByComponent: boolean,
+    collapseComponentGroups: boolean,
+    displayName: string,
+    diffs: []
+  ) => void
 }
 export const normalizeOptions = (options: OptionsObject) => {
   let {
