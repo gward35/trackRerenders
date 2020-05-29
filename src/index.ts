@@ -1,7 +1,7 @@
 import { classifyDiff, DIFF_TYPES } from "./diff"
 import { getDisplayName, IDisplayName } from "./getDisplayName"
 import { normalizeOptions } from "./normalizeOptions"
-import { shouldInclude } from "./shouldInclude"
+import shouldInclude from "./shouldInclude"
 
 const memoized = (map: Map<string, object>, key: string, fn: () => {}) => {
   // key already in the memoizer
