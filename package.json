@@ -2,7 +2,7 @@
   "name": "track-renders",
   "version": "1.0.0",
   "description": "tool to warn us of wasted re renders",
-  "main": "index.ts",
+  "main": "dist/index",
   "author": "Gretchen Ward",
   "license": "MIT",
   "private": true,
