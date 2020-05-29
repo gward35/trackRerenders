@@ -1,7 +1,7 @@
 import { classifyDiff, DIFF_TYPES } from "./diff"
 import { getDisplayName, IDisplayName } from "./getDisplayName"
 import { normalizeOptions } from "./normalizeOptions"
-import shouldInclude from "./shouldInclude"
+import { shouldInclude } from "./shouldInclude"
 
 const memoized = (map: Map<string, object>, key: string, fn: () => {}) => {
   // key already in the memoizer
@@ -147,8 +147,9 @@ export const trackReRenders = (React: any, options: OptionsObject) => {
     let ctor = type
 
     const displayName = getDisplayName(ctor)
+    const useShouldInclude = shouldInclude(displayName, options)
     // the element is a class component or a functional component
-    if (typeof ctor === "function" && shouldInclude(displayName, options)) {
+    if (typeof ctor === "function" && useShouldInclude) {
       if (ctor.prototype && typeof ctor.prototype.render === "function") {
         // If the constructor has a `render` method in its prototype,
         // we're dealing with a class component
