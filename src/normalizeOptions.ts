@@ -21,20 +21,28 @@ type OptionsObject = {
     diffs: []
   ) => void
 }
-export const normalizeOptions = (options: OptionsObject) => {
+let opts = {
+  include: DEFAULT_INCLUDE,
+  exclude: DEFAULT_EXCLUDE,
+  groupByComponent: true,
+  collapseComponentGroups: true,
+  defaultNotifier: notifier,
+}
+
+export const normalizeOptions = (options: OptionsObject = opts) => {
   let {
-    include = [DEFAULT_INCLUDE],
-    exclude = [DEFAULT_EXCLUDE],
+    include = DEFAULT_INCLUDE,
+    exclude = DEFAULT_EXCLUDE,
     groupByComponent = true,
     collapseComponentGroups = true,
     defaultNotifier = notifier,
   } = options
 
   return {
-    defaultNotifier,
     include: toArray(include).map(toRegExp),
     exclude: toArray(exclude).map(toRegExp),
     groupByComponent,
     collapseComponentGroups,
+    defaultNotifier,
   }
 }
