@@ -21895,7 +21895,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
           var hostname = "" || location.hostname
           var protocol = location.protocol === "https:" ? "wss" : "ws"
           var ws = new WebSocket(
-            protocol + "://" + hostname + ":" + "64201" + "/"
+            protocol + "://" + hostname + ":" + "63630" + "/"
           )
 
           ws.onmessage = function (event) {

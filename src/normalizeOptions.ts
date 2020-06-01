@@ -8,7 +8,7 @@ export const DEFAULT_EXCLUDE = /[^a-zA-Z0-9()]/
 const toRegExp = (s: string) => (_.isString(s) ? new RegExp(`^${s}$`) : s)
 const toArray = (o: []) => (o ? [].concat(o) : [])
 
-type OptionsObject = {
+export type OptionsObject = {
   // figure out union type for string[] and RegExp[]
   include: any
   exclude: any
@@ -18,10 +18,17 @@ type OptionsObject = {
     groupByComponent: boolean,
     collapseComponentGroups: boolean,
     displayName: string,
-    diffs: []
+    diffs: any
   ) => void
 }
-export const normalizeOptions = (options: OptionsObject) => {
+let opts = {
+  include: [DEFAULT_INCLUDE],
+  exclude: [DEFAULT_EXCLUDE],
+  groupByComponent: true,
+  collapseComponentGroups: true,
+  defaultNotifier: notifier,
+}
+export const normalizeOptions = (options: OptionsObject = opts) => {
   let {
     include = [DEFAULT_INCLUDE],
     exclude = [DEFAULT_EXCLUDE],

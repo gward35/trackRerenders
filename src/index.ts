@@ -1,6 +1,6 @@
 import { classifyDiff, DIFF_TYPES } from "./diff"
 import { getDisplayName, IDisplayName } from "./getDisplayName"
-import { normalizeOptions } from "./normalizeOptions"
+import { normalizeOptions, OptionsObject } from "./normalizeOptions"
 import { shouldInclude } from "./shouldInclude"
 
 const memoized = (map: Map<string, object>, key: string, fn: () => {}) => {
@@ -15,21 +15,12 @@ const memoized = (map: Map<string, object>, key: string, fn: () => {}) => {
   return ret
 }
 
-type OptionsObject = {
-  include: any
-  exclude: any
-  groupByComponent: boolean
-  collapseComponentGroups: boolean
-  defaultNotifier: (
-    groupByComponent: boolean,
-    collapseComponentGroups: boolean,
-    displayName: string,
-    []
-  ) => void
-}
-
 function createComponentDidUpdate(displayName: string, options: OptionsObject) {
-  return function componentDidUpdate(prevProps: object[], prevState: object[]) {
+  return function componentDidUpdate(
+    this: any,
+    prevProps: object[],
+    prevState: object[]
+  ) {
     const propsDiff = classifyDiff(
       prevProps,
       this.props,
@@ -110,8 +101,8 @@ const createFunctionalComponent = (
 ) => {
   let cdu = createComponentDidUpdate(displayName, options)
 
-  let previousProps = {}
-  let state = {}
+  let previousProps: object[] = [{}]
+  let state: object[] = [{}]
   let TRRClassComponent = class extends ctor {
     function(props: object[], context: object[]) {
       cdu.call({ props, state }, previousProps, state)
@@ -119,8 +110,6 @@ const createFunctionalComponent = (
       return new ctor(props, context)
     }
   }
-
-  console.log(TRRClassComponent)
 
   TRRClassComponent.displayName = displayName
   TRRClassComponent.contextTypes = ctor.contextTypes

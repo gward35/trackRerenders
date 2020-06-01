@@ -1,18 +1,5 @@
-import * as _ from "lodash"
-
-type OptionsObject = {
-  // figure out union type for string[] and RegExp[]
-  include: any
-  exclude: any
-  groupByComponent: boolean
-  collapseComponentGroups: boolean
-  defaultNotifier: (
-    groupByComponent: boolean,
-    collapseComponentGroups: boolean,
-    displayName: string,
-    diffs: []
-  ) => void
-}
+import _ from "lodash"
+import { OptionsObject } from "./normalizeOptions"
 
 export const shouldInclude = (displayName: string, options: OptionsObject) => {
   return (

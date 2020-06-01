@@ -58,7 +58,7 @@ const notifyDiff = (p: INotifyDiffArgs) => {
 
       if (prev && next) {
         ;(Object.keys(prev) as Array<keyof INotifyDiffArgs>).forEach(
-          (key: number) => {
+          (key: any) => {
             if (prev[key] !== next[key]) {
               console.log('"' + key + '" property is not equal by reference')
             }
