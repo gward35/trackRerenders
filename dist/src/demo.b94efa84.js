@@ -56541,7 +56541,7 @@ object-assign
 
         var lodash_1 = __importDefault(require("lodash"))
 
-        exports.shouldInclude = function (displayName, options) {
+        function shouldInclude(displayName, options) {
           return (
             lodash_1.default.some(options.include, function (r) {
               return r.test(displayName)
@@ -56551,6 +56551,8 @@ object-assign
             })
           )
         }
+
+        exports.shouldInclude = shouldInclude
       },
       { lodash: "node_modules/lodash/lodash.js" },
     ],
@@ -57157,7 +57159,7 @@ object-assign
           var hostname = "" || location.hostname
           var protocol = location.protocol === "https:" ? "wss" : "ws"
           var ws = new WebSocket(
-            protocol + "://" + hostname + ":" + "51261" + "/"
+            protocol + "://" + hostname + ":" + "56634" + "/"
           )
 
           ws.onmessage = function (event) {
