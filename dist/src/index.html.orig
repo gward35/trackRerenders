@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Track Rerenders</title>
+  </head>
+  <body>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="root"></div>
+<<<<<<< HEAD
+    <script type="text/javascript" src="/demo.6d8104d0.js"></script>
+=======
+    <script type="text/javascript" src="/src.1bf699e3.js"></script>
+>>>>>>> 20e768d7ff3c66067d6ffd90e4225ff520a694d5
+  </body>
+</html>
