@@ -1,7 +1,6 @@
 import * as _ from "lodash"
 
 import { notifier } from "./notifier"
-
 export const DEFAULT_INCLUDE = /./
 export const DEFAULT_EXCLUDE = /[^a-zA-Z0-9()]/
 
@@ -21,6 +20,7 @@ export type OptionsObject = {
     diffs: any
   ) => void
 }
+
 let opts = {
   include: [DEFAULT_INCLUDE],
   exclude: [DEFAULT_EXCLUDE],
@@ -28,6 +28,7 @@ let opts = {
   collapseComponentGroups: true,
   defaultNotifier: notifier,
 }
+
 export const normalizeOptions = (options: OptionsObject = opts) => {
   let {
     include = [DEFAULT_INCLUDE],

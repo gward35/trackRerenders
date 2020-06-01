@@ -101,8 +101,8 @@ const createFunctionalComponent = (
 ) => {
   let cdu = createComponentDidUpdate(displayName, options)
 
-  let previousProps: object[] = [{}]
-  let state: object[] = [{}]
+  let previousProps = [{}]
+  let state = [{}]
   let TRRClassComponent = class extends ctor {
     function(props: object[], context: object[]) {
       cdu.call({ props, state }, previousProps, state)
